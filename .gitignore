@@ -4,6 +4,7 @@
 
 ### VisualStudioCode ###
 .vscode/*
+!.vscode/c_cpp_properties.json
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -17,5 +18,8 @@
 # Ignore all local history of files
 .history
 .ionide
+
+### exclude ROS workspaces ###
+dev_ws/*
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
