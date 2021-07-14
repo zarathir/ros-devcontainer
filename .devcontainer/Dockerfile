@@ -26,6 +26,7 @@ RUN apt-get update \
   && apt-get install -y ssh \
     sudo \
     build-essential \
+    git \
     gcc \
     g++ \
     gdb \
