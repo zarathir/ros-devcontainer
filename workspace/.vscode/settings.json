@@ -39,4 +39,5 @@
         "/opt/ros/foxy/lib/python3.8/site-packages/"
     ],
     "python.analysis.completeFunctionParens": true,
+    "rust-analyzer.cargo.runBuildScripts": true,
 }

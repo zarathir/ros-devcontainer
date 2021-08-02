@@ -11,6 +11,7 @@
 !.vscode/extensions.json
 *.code-workspace
 
+
 # Local History for Visual Studio Code
 .history/
 
@@ -20,6 +21,7 @@
 .ionide
 
 ### exclude ROS workspaces ###
-dev_ws/*
+workspace/*
+!workspace/**/.vscode
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode
