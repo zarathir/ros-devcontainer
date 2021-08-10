@@ -4,6 +4,7 @@
         100
     ],
     "editor.defaultFormatter": "zachflower.uncrustify",
+    "editor.formatOnSave": true,
     "files.associations": {
         "*.repos": "yaml",
         "*.world": "xml",
@@ -11,7 +12,7 @@
     },
     // Autocomplete from ros python packages
     "python.autoComplete.extraPaths": [
-        "/opt/ros/foxy/lib/python3.8/site-packages/"
+        "/opt/ros/$ROS_DISTRO/lib/python3.8/site-packages/"
     ],
     "python.autoComplete.addBrackets": true,
     "python.pythonPath": "/usr/bin/python3",
@@ -23,7 +24,7 @@
     "C_Cpp.default.intelliSenseMode": "clang-x64",
     "C_Cpp.formatting": "Disabled",
     "uncrustify.useReplaceOption": true,
-    "uncrustify.configPath.linux": "/opt/ros/foxy/lib/python3.8/site-packages/ament_uncrustify/configuration/ament_code_style.cfg",
+    "uncrustify.configPath.linux": "/opt/ros/$ROS_DISTRO/lib/python3.8/site-packages/ament_uncrustify/configuration/ament_code_style.cfg",
     "[cpp]": {
         "editor.defaultFormatter": "zachflower.uncrustify"
     },
@@ -36,7 +37,7 @@
         "**/log": true
     },
     "python.analysis.extraPaths": [
-        "/opt/ros/foxy/lib/python3.8/site-packages/"
+        "/opt/ros/$ROS_DISTRO/lib/python3.8/site-packages/"
     ],
     "python.analysis.completeFunctionParens": true,
     "rust-analyzer.cargo.runBuildScripts": true,
