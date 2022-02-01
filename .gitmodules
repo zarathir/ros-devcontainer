@@ -1,0 +1,3 @@
+[submodule "servo-controller"]
+	path = servo-controller
+	url = git@github.com:zarathir/servo-controller.git
