@@ -33,6 +33,7 @@ RUN apt-get update && apt-get install -y \
     gnupg2 \
     lsb-release \
     git \
+    libclang-dev \
     sudo \
     && curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null \
@@ -68,8 +69,18 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME \
     && echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> /home/$USERNAME/.bashrc
 
+COPY entrypoint.sh /entrypoint.sh
+RUN ["chmod", "+x", "/entrypoint.sh"]
+
 USER $USERNAME
 # install rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 ENV PATH="/home/${USERNAME}/.cargo/bin:${PATH}"
+
+#USER root
+
+#COPY entrypoint.sh /entrypoint.sh
+#RUN ["chmod", "+x", "/entrypoint.sh"]
+#ENTRYPOINT [ "/entrypoint.sh" ]
+#CMD [ "/bin/sh", "-c", "while sleep 1000; do :; done" ]

@@ -18,5 +18,5 @@ services:
       - SYS_PTRACE
     security_opt:
       - seccomp:unconfined
-
-    command: /bin/sh -c "while sleep 1000; do :; done"
+    entrypoint: /entrypoint.sh
+    #command: /bin/sh -c "while sleep 1000; do :; done"
