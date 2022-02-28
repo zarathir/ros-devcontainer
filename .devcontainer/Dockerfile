@@ -42,7 +42,10 @@ RUN apt-get update && apt-get install -y \
     ros-galactic-gazebo* \
     ros-galactic-turtlebot3-msgs \
     ros-galactic-turtlebot3 \
+    python3-colcon-common-extensions \
+    python3-rosdep \
     python3-argcomplete \
+    python3-pip \
     mesa-utils \
     libglvnd0 \
     libgl1 \
