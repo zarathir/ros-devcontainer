@@ -1,8 +1,6 @@
-FROM nvidia/opengl:1.2-glvnd-devel-ubuntu20.04
+FROM ubuntu:20.04
 
 ENV TZ=Europe/Zurich
-ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES},display
-ENV QT_X11_NO_MITSHM=1
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -38,21 +36,13 @@ RUN apt-get update && apt-get install -y \
     && curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null \
     && apt-get update && apt-get install -y \
-    ros-galactic-desktop \
-    ros-galactic-gazebo* \
+    ros-galactic-ros-base \
     ros-galactic-turtlebot3-msgs \
     ros-galactic-turtlebot3 \
     python3-colcon-common-extensions \
     python3-rosdep \
     python3-argcomplete \
     python3-pip \
-    mesa-utils \
-    libglvnd0 \
-    libgl1 \
-    libglx0 \
-    libegl1 \
-    libxext6 \
-    libx11-6 \
     && rm -rf /var/lib/apt/lists/*
 
 ENV ROS_DISTRO=galactic
@@ -80,10 +70,3 @@ USER $USERNAME
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 ENV PATH="/home/${USERNAME}/.cargo/bin:${PATH}"
-
-#USER root
-
-#COPY entrypoint.sh /entrypoint.sh
-#RUN ["chmod", "+x", "/entrypoint.sh"]
-#ENTRYPOINT [ "/entrypoint.sh" ]
-#CMD [ "/bin/sh", "-c", "while sleep 1000; do :; done" ]

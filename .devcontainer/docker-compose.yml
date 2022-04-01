@@ -4,14 +4,9 @@ services:
   app:
     image: gui-container:latest
     build: .
-    environment:
-      - DISPLAY=${DISPLAY}
-      - QT_X11_NO_MITSHM=1"
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix
       - ..:/workspace:cached
     network_mode: host
-    runtime: nvidia
     privileged: true
     # Uncomment the next four lines if you will use a ptrace-based debugger like C++, Go, and Rust.
     cap_add:
@@ -19,4 +14,3 @@ services:
     security_opt:
       - seccomp:unconfined
     entrypoint: /entrypoint.sh
-    #command: /bin/sh -c "while sleep 1000; do :; done"
